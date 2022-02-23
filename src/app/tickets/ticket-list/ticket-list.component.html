@@ -1,0 +1,13 @@
+<div class="ticket-list">
+  <input type='button' value='show archived tickets' (click)="displayTicketArchived = true"/>
+  <input type='button' value='hide archived tickets'(click)="displayTicketArchived = false"/>
+
+  <ng-container *ngFor="let ticket of ticketList">
+    <div class="ticket" *ngIf="ticket.archived && displayTicketArchived || !ticket.archived && !displayTicketArchived">
+      <app-ticket [ticket]="ticket" (ticketHasBeenSelected)="ticketHasBeenSelected($event)"
+                  (ticketHasBeenArchived)="archivedTicket(ticket)">
+
+      </app-ticket>
+    </div>
+  </ng-container>
+</div>
